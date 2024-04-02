@@ -18,6 +18,7 @@ class DetailPage extends StatelessWidget {
     final int id = Get.arguments['animeId'];
     BlocProvider.of<DetailBloc>(context).add(DetailLoad(id: id));
     return Scaffold(
+      backgroundColor: Colors.grey[200],
       body: BlocBuilder<DetailBloc, DetailState>(builder: (context, state) {
         if (state is DetailInitial) {
           return Skeletonizer(

@@ -1,11 +1,13 @@
 import 'package:animus/bloc/anime_list/anime_list_bloc.dart';
 import 'package:animus/bloc/anime_top/anime_top_bloc.dart';
 import 'package:animus/bloc/anime_upcoming/anime_upcoming_bloc.dart';
+import 'package:animus/bloc/categories/categories_bloc.dart';
 import 'package:animus/bloc/detail/detail_bloc.dart';
 import 'package:animus/bloc/page_pointer/page_pointer_bloc.dart';
 import 'package:animus/bloc/page_total/page_total_bloc.dart';
 import 'package:animus/bloc/search/search_bloc.dart';
 import 'package:animus/bloc/search_query/search_query_bloc.dart';
+import 'package:animus/pages/categories.dart';
 import 'package:animus/pages/detail.dart';
 import 'package:animus/pages/home.dart';
 import 'package:animus/pages/search.dart';
@@ -38,6 +40,8 @@ class MainApp extends StatelessWidget {
         BlocProvider(create: (context) => PagePointerBloc()),
         BlocProvider(create: (context) => PageTotalBloc()),
         BlocProvider(create: (context) => SearchQueryBloc()),
+        BlocProvider(
+            create: (context) => CategoriesBloc(repository: repository)),
       ],
       child: GetMaterialApp(
         theme: ThemeData(textTheme: GoogleFonts.interTextTheme()),
@@ -46,7 +50,11 @@ class MainApp extends StatelessWidget {
         getPages: [
           GetPage(name: Home.route, page: () => const Home()),
           GetPage(name: Search.route, page: () => const Search()),
-          GetPage(name: DetailPage.route, page: () => const DetailPage())
+          GetPage(
+            name: DetailPage.route,
+            page: () => const DetailPage(),
+          ),
+          GetPage(name: CategoriesWidget.route, page: () => CategoriesWidget())
         ],
       ),
     );

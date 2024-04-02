@@ -10,13 +10,13 @@ class AnimeListRepository extends AnimeListDataSource {
       receiveTimeout: const Duration(seconds: 5))));
 
   @override
-  Future<AnimeList> getTopAnimes() {
-    return _animeListApi.getTopAnimes();
+  Future<AnimeList> getTopAnimes({int page = 1}) {
+    return _animeListApi.getTopAnimes(page: page);
   }
 
   @override
-  Future<AnimeList> getSeasonAnimes({String time = 'upcoming'}) {
-    return _animeListApi.getSeasonAnimes(time: time);
+  Future<AnimeList> getSeasonAnimes({String time = 'upcoming', int page = 1}) {
+    return _animeListApi.getSeasonAnimes(time: time, page: page);
   }
 
   @override
