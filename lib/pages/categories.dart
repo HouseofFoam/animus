@@ -1,4 +1,3 @@
-import 'package:animus/bloc/anime_upcoming/anime_upcoming_bloc.dart';
 import 'package:animus/bloc/categories/categories_bloc.dart';
 import 'package:animus/bloc/page_pointer/page_pointer_bloc.dart';
 import 'package:animus/bloc/page_total/page_total_bloc.dart';
