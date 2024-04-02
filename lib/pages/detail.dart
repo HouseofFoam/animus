@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:animus/bloc/detail/detail_bloc.dart';
 import 'package:animus/bloc/search/search_bloc.dart';
 import 'package:animus/widgets/animes.dart';
@@ -8,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
 import 'package:skeletonizer/skeletonizer.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class DetailPage extends StatelessWidget {
   static const String route = '/detail';
@@ -35,7 +38,7 @@ class DetailPage extends StatelessWidget {
                   const SizedBox(
                     height: 83,
                   ),
-                  twoButtons(context),
+                  twoButtons(context, null, null),
                   const Padding(
                     padding: EdgeInsets.only(top: 8, left: 8),
                     child: Text(
@@ -77,7 +80,8 @@ class DetailPage extends StatelessWidget {
                 const SizedBox(
                   height: 83,
                 ),
-                twoButtons(context),
+                twoButtons(context, state.anime.data?.trailer?.url,
+                    state.anime.data?.url),
                 const Padding(
                   padding: EdgeInsets.only(top: 8, left: 8),
                   child: Text(
@@ -112,11 +116,12 @@ class DetailPage extends StatelessWidget {
     );
   }
 
-  SizedBox twoButtons(BuildContext context) {
+  SizedBox twoButtons(
+      BuildContext context, String? youtubeString, String? malString) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 40,
-      child: const Row(
+      child: Row(
         children: [
           Expanded(
             child: CustomButton(
@@ -124,6 +129,8 @@ class DetailPage extends StatelessWidget {
               gradientColorStart: Color.fromARGB(255, 131, 32, 25),
               gradientColorEnd: Color.fromARGB(255, 67, 73, 153),
               textColor: Colors.white,
+              onTap: () => launchUrl(Uri.parse(youtubeString ??
+                  "https://www.youtube.com/watch?v=dQw4w9WgXcQ")),
             ),
           ),
           Expanded(
@@ -132,6 +139,8 @@ class DetailPage extends StatelessWidget {
               gradientColorStart: Color.fromARGB(255, 67, 73, 153),
               gradientColorEnd: Color.fromARGB(255, 131, 32, 25),
               textColor: Colors.white,
+              onTap: () => launchUrl(Uri.parse(
+                  malString ?? "https://www.youtube.com/watch?v=dQw4w9WgXcQ")),
             ),
           )
         ],
