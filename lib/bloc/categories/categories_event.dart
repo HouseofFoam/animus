@@ -10,10 +10,11 @@ sealed class CategoriesEvent extends Equatable {
 class PickCategory extends CategoriesEvent {}
 
 class ChangeCategory extends CategoriesEvent {
-  final int newIndex;
+  final String newString;
+  final int newPage;
 
-  const ChangeCategory({required this.newIndex});
+  const ChangeCategory({required this.newString, this.newPage = 1});
 
   @override
-  List<Object> get props => [newIndex];
+  List<Object> get props => [newString, newPage];
 }

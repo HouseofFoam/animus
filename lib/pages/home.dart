@@ -1,6 +1,7 @@
 import 'package:animus/bloc/anime_list/anime_list_bloc.dart';
 import 'package:animus/bloc/anime_top/anime_top_bloc.dart';
 import 'package:animus/bloc/anime_upcoming/anime_upcoming_bloc.dart';
+import 'package:animus/pages/categories.dart';
 import 'package:animus/pages/search.dart';
 import 'package:animus/widgets/Animes.dart';
 import 'package:animus/widgets/poster_skeleton.dart';
@@ -90,43 +91,51 @@ class Home extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             animeList(),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     "Top Anime",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text(
-                    "See More",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        color: Color.fromARGB(255, 131, 32, 25)),
+                  GestureDetector(
+                    onTap: () => Get.toNamed(CategoriesWidget.route,
+                        arguments: {'categories': "top"}),
+                    child: const Text(
+                      "See More",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: Color.fromARGB(255, 131, 32, 25)),
+                    ),
                   ),
                 ],
               ),
             ),
             animeTop(),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     "Upcoming Anime",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
-                  Text(
-                    "See More",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
-                        color: Color.fromARGB(255, 131, 32, 25)),
+                  GestureDetector(
+                    onTap: () => Get.toNamed(CategoriesWidget.route,
+                        arguments: {'categories': "upcoming"}),
+                    child: const Text(
+                      "See More",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                          color: Color.fromARGB(255, 131, 32, 25)),
+                    ),
                   ),
                 ],
               ),

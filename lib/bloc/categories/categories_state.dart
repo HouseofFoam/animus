@@ -7,10 +7,20 @@ sealed class CategoriesState extends Equatable {
   List<Object> get props => [];
 }
 
-final class CategoriesIndex extends CategoriesState {
-  final int index;
-  const CategoriesIndex({this.index = 0});
+final class CategoriesInitial extends CategoriesState {}
+
+final class CategoriesHasData extends CategoriesState {
+  final AnimeList animeList;
+  const CategoriesHasData({required this.animeList});
 
   @override
-  List<Object> get props => [index];
+  List<Object> get props => [animeList];
+}
+
+final class CategoriesError extends CategoriesState {
+  final String errString;
+  const CategoriesError({required this.errString});
+
+  @override
+  List<Object> get props => [errString];
 }
