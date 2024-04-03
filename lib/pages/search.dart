@@ -6,7 +6,6 @@ import 'package:animus/widgets/Animes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:number_paginator/number_paginator.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -16,7 +15,7 @@ class Search extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final NumberPaginatorController _controller = NumberPaginatorController();
+    final NumberPaginatorController controller = NumberPaginatorController();
     BlocProvider.of<SearchBloc>(context).add(LoadAnimeList());
     return Scaffold(
       bottomNavigationBar: BlocBuilder<PageTotalBloc, PageTotalState>(
@@ -26,7 +25,12 @@ class Search extends StatelessWidget {
               builder: (context, pointerState) {
                 if (pointerState is PagePointerInitial) {
                   return NumberPaginator(
-                    controller: _controller,
+                    config: const NumberPaginatorUIConfig(
+                        buttonSelectedBackgroundColor:
+                            Color.fromARGB(255, 131, 32, 25),
+                        buttonSelectedForegroundColor: Colors.white,
+                        buttonUnselectedForegroundColor: Colors.grey),
+                    controller: controller,
                     numberPages: state.totalPage,
                     onPageChange: (p0) {
                       context1.read<PagePointerBloc>().add(ChangePagePointer(
@@ -72,7 +76,7 @@ class Search extends StatelessWidget {
                                 query: queryState.searchQuery));
                             return TextField(
                                 onChanged: (value) {
-                                  _controller.navigateToPage(0);
+                                  controller.navigateToPage(0);
                                   context
                                       .read<SearchQueryBloc>()
                                       .add(ChangeQuery(newQuery: value));
@@ -82,8 +86,7 @@ class Search extends StatelessWidget {
                                     filled: true,
                                     border: OutlineInputBorder(
                                         borderSide: BorderSide.none,
-                                        borderRadius:
-                                            BorderRadius.circular(999)),
+                                        borderRadius: BorderRadius.circular(8)),
                                     hintText: "Search your anime",
                                     icon: GestureDetector(
                                       onTap: () => Get.back(),

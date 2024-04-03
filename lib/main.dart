@@ -46,7 +46,7 @@ class MainApp extends StatelessWidget {
       child: GetMaterialApp(
         theme: ThemeData(textTheme: GoogleFonts.interTextTheme()),
         debugShowCheckedModeBanner: false,
-        home: Home(),
+        home: const Home(),
         getPages: [
           GetPage(name: Home.route, page: () => const Home()),
           GetPage(name: Search.route, page: () => const Search()),
@@ -54,7 +54,9 @@ class MainApp extends StatelessWidget {
             name: DetailPage.route,
             page: () => const DetailPage(),
           ),
-          GetPage(name: CategoriesWidget.route, page: () => CategoriesWidget())
+          GetPage(
+              name: CategoriesWidget.route,
+              page: () => const CategoriesWidget())
         ],
       ),
     );

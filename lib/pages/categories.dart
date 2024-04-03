@@ -26,6 +26,11 @@ class CategoriesWidget extends StatelessWidget {
               builder: (context, pointerState) {
                 if (pointerState is PagePointerInitial) {
                   return NumberPaginator(
+                    config: const NumberPaginatorUIConfig(
+                        buttonSelectedBackgroundColor:
+                            Color.fromARGB(255, 131, 32, 25),
+                        buttonSelectedForegroundColor: Colors.white,
+                        buttonUnselectedForegroundColor: Colors.grey),
                     numberPages: state.totalPage,
                     onPageChange: (p0) {
                       context1.read<PagePointerBloc>().add(ChangePagePointer(
@@ -54,20 +59,22 @@ class CategoriesWidget extends StatelessWidget {
           Container(
               alignment: Alignment.center,
               width: MediaQuery.of(context).size.width,
-              height: 40,
               decoration: const BoxDecoration(
                   gradient: LinearGradient(colors: [
                 Color.fromARGB(255, 131, 32, 25),
                 Color.fromARGB(255, 67, 73, 153)
               ])),
               child: SafeArea(
-                child: Text(
-                  categories.toUpperCase(),
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Text(
+                    categories.toUpperCase(),
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
                 ),
               )),
           BlocBuilder<CategoriesBloc, CategoriesState>(

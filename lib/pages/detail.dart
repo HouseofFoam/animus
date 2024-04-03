@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:animus/bloc/detail/detail_bloc.dart';
 import 'package:animus/bloc/search/search_bloc.dart';
 import 'package:animus/widgets/animes.dart';
@@ -126,8 +124,8 @@ class DetailPage extends StatelessWidget {
           Expanded(
             child: CustomButton(
               text: 'Trailer',
-              gradientColorStart: Color.fromARGB(255, 131, 32, 25),
-              gradientColorEnd: Color.fromARGB(255, 67, 73, 153),
+              gradientColorStart: const Color.fromARGB(255, 131, 32, 25),
+              gradientColorEnd: const Color.fromARGB(255, 67, 73, 153),
               textColor: Colors.white,
               onTap: () => launchUrl(Uri.parse(youtubeString ??
                   "https://www.youtube.com/watch?v=dQw4w9WgXcQ")),
@@ -136,8 +134,8 @@ class DetailPage extends StatelessWidget {
           Expanded(
             child: CustomButton(
               text: 'MAL',
-              gradientColorStart: Color.fromARGB(255, 67, 73, 153),
-              gradientColorEnd: Color.fromARGB(255, 131, 32, 25),
+              gradientColorStart: const Color.fromARGB(255, 67, 73, 153),
+              gradientColorEnd: const Color.fromARGB(255, 131, 32, 25),
               textColor: Colors.white,
               onTap: () => launchUrl(Uri.parse(
                   malString ?? "https://www.youtube.com/watch?v=dQw4w9WgXcQ")),
@@ -300,6 +298,6 @@ class DetailPage extends StatelessWidget {
         ],
       );
     }
-    return SizedBox.shrink();
+    return const SizedBox.shrink();
   }
 }

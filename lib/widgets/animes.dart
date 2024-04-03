@@ -55,7 +55,7 @@ class Animes extends StatelessWidget {
             width: width,
             child: Text(
               title,
-              style: TextStyle(color: Colors.black),
+              style: const TextStyle(color: Colors.black),
               overflow: TextOverflow.ellipsis,
             ),
           ),

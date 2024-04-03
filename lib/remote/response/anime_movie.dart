@@ -17,7 +17,7 @@ class AnimeList extends Equatable {
   final Pagination? pagination;
   final List<Datum>? data;
 
-  AnimeList({
+  const AnimeList({
     this.pagination,
     this.data,
   });
@@ -45,7 +45,7 @@ class AnimeList extends Equatable {
 class Anime extends Equatable {
   final Datum? data;
 
-  Anime({
+  const Anime({
     this.data,
   });
 
@@ -73,7 +73,7 @@ class Datum extends Equatable {
   final double? score;
   final String? synopsis;
 
-  Datum({
+  const Datum({
     this.synopsis,
     this.genres,
     this.malId,
@@ -130,7 +130,7 @@ class Genre extends Equatable {
   final String? name;
   final String? url;
 
-  Genre({
+  const Genre({
     this.malId,
     this.type,
     this.name,
@@ -158,7 +158,7 @@ class Genre extends Equatable {
 class DatumImages extends Equatable {
   final Jpg? jpg;
 
-  DatumImages({
+  const DatumImages({
     this.jpg,
   });
 
@@ -177,7 +177,7 @@ class DatumImages extends Equatable {
 class Jpg extends Equatable {
   final String? largeImageUrl;
 
-  Jpg({
+  const Jpg({
     this.largeImageUrl,
   });
 
@@ -199,7 +199,7 @@ class Trailer extends Equatable {
   final String? embedUrl;
   final TrailerImages? images;
 
-  Trailer({
+  const Trailer({
     this.youtubeId,
     this.url,
     this.embedUrl,
@@ -230,7 +230,7 @@ class TrailerImages extends Equatable {
   final String? largeImageUrl;
   final String? maximumImageUrl;
 
-  TrailerImages({
+  const TrailerImages({
     this.largeImageUrl =
         "https://resources.alleghenycounty.us/css/images/Default_No_Image_Available.png",
     this.maximumImageUrl =
@@ -256,7 +256,7 @@ class Pagination extends Equatable {
   final int? currentPage;
   final Items? items;
 
-  Pagination({
+  const Pagination({
     this.lastVisiblePage,
     this.hasNextPage,
     this.currentPage,
@@ -286,7 +286,7 @@ class Items extends Equatable {
   final int? total;
   final int? perPage;
 
-  Items({
+  const Items({
     this.count,
     this.total,
     this.perPage,
